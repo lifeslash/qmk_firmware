@@ -20,6 +20,17 @@ enum custom_keycodes {
   ALT_TAB
 };
 
+enum td_codes {
+  // tap dance keycode must be started from 0
+  TD_ESC_CAPS, // tap dance(once for escape, twice for caps lock)
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -35,9 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | Grv  |  '"  | Esc  | Left | Down |                                       |  Up  | Right|   [  |   ]  | ~L1  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |DM_RC1|       |      |        |
+ *                                        |      |DM_RC1|       |DM_RC2|        |
  *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      |DM_STP|       |DM_RC2|        |      |
+ *                                 |      |      |DM_STP|       |DM_STP|        |      |
  *                                 | Space|Backsp|------|       |------|  Han   |Enter |
  *                                 |      |ace   |DM_PL1|       |DM_PL2|        |      |
  *                                 `--------------------'       `----------------------'
@@ -48,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,          LT(SYMB,KC_Q),KC_W,      KC_E,    KC_R,    KC_T,    GUI_T(KC_QUOT),
   CW_TOGG,         KC_A,        KC_S,       KC_D,    KC_F,    KC_G,
   SC_LSPO,         CTL_T(KC_Z), KC_X,       KC_C,    KC_V,    KC_B,    KC_EQL,
-  KC_GRV,          KC_QUOT,     KC_ESC,     KC_LEFT, KC_DOWN,
+  KC_GRV,          KC_QUOT,     TD(TD_ESC_CAPS),KC_LEFT,KC_DOWN,
                                                                  KC_NO,   DM_REC1,
                                                                           DM_RSTP,
                                                          KC_SPC, KC_BSPC, DM_PLY1,
@@ -214,7 +225,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
         #endif
         break;
-      /*case 3:
+      /*case 3: // 3 or more layer is not used
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_3
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
