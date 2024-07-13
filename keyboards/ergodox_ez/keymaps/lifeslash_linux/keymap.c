@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    | Q/L1 |   W  |   E  |   R  |   T  |  '   |           |   \  |   Y  |   U  |   I  |   O  | P/L1 |  DEL   |
  * |--------+------+------+------+------+------|  Cmd |           |  Cmd |------+------+------+------+------+--------|
- * |WordCAPS| A/L2 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|APP/Alt |
+ * |WordCAPS|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |  ;   |APP/Alt |
  * |--------+------+------+------+------+------|   =  |           |   -  |------+------+------+------+------+--------|
  * | LShift(|Z/Ctrl| X/ALT|   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  | ./ALT|//Ctrl| RShift)|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand
   LCTL(LALT(KC_LEFT)),KC_1,     KC_2,       KC_3,    KC_4,    KC_5,    KC_6,
   KC_TAB,          LT(SYMB,KC_Q),KC_W,      KC_E,    KC_R,    KC_T,    GUI_T(KC_QUOT),
-  CW_TOGG,         LT(MDIA,KC_A),KC_S,      KC_D,    KC_F,    KC_G,
+  CW_TOGG,         KC_A,        KC_S,       KC_D,    KC_F,    KC_G,
   SC_LSPO,         CTL_T(KC_Z), LALT_T(KC_X),KC_C,   KC_V,    KC_B,    KC_EQL,
   KC_GRV,          KC_QUOT,     TD(TD_ESC_CAPS),KC_LEFT,KC_DOWN,
                                                                  KC_NO,   DM_REC1,
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   KC_7,         KC_8,    KC_9,    KC_0,    ALT_TAB,           LCTL(LALT(KC_T)),   LCTL(LALT(KC_RGHT)),
   GUI_T(KC_BSLS),KC_Y,   KC_U,    KC_I,    KC_O,              LT(SYMB,KC_P),      KC_DEL,
-  KC_H,         KC_J,    KC_K,    KC_L,    LT(MDIA, KC_SCLN), LALT_T(KC_APP),
+  KC_H,         KC_J,    KC_K,    KC_L,    KC_SCLN,           LALT_T(KC_APP),
   KC_MINS,      KC_N,    KC_M,    KC_COMM, LALT_T(KC_DOT),    CTL_T(KC_SLSH),     SC_RSPC,
   KC_UP,        KC_RGHT, KC_LBRC, KC_RBRC, TT(SYMB),
   DM_REC2,   KC_KB_POWER,
@@ -119,41 +119,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      | MsUp |      |      |           |      |      | MsUp |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |MsLeft|MsDown|MsRght|------|           |------|MsLeft|MsDown|MsRght|      |      |        |
+ * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      | WH_L | WH_D |                                       | WH_U | WH_R |      |      |      |
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | Rclk | Lclk |------|       |------| Lclk | Rclk |
- *                                 |      |      | Btn3 |       | Btn3 |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [MDIA] = LAYOUT_ergodox(
   // left hand
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
-  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MS_U, KC_NO,   KC_NO,  
-  KC_NO,   KC_NO,   KC_NO,   KC_MS_L, KC_MS_D, KC_MS_R,  
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
-  KC_NO,   KC_NO,   KC_NO,   KC_WH_L, KC_WH_D,
+  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
+  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
+  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                                KC_NO,   KC_NO,  
                                                         KC_NO,  
-                                      KC_BTN2, KC_BTN1, KC_BTN3,  
+                                      KC_NO,   KC_NO,   KC_NO,  
   // right hand
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
-  KC_NO,   KC_NO,   KC_MS_U, KC_NO,   KC_NO,   KC_NO,   KC_NO,  
-           KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,   KC_NO,   KC_NO,  
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
-                    KC_WH_U, KC_WH_R, KC_NO,   KC_NO,   KC_NO,  
+           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
+  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
+                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  
   KC_NO,   KC_NO,  
   KC_NO,  
-  KC_BTN3, KC_BTN1, KC_BTN2
+  KC_NO,   KC_NO,   KC_NO
 ),
 };
 
